@@ -2,7 +2,6 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import './index.scss'
 import {createWebHashHistory, createRouter} from 'vue-router'
-import Topnav from './components/Topnav.vue'
 import home from './views/home.vue'
 import Doc from './views/Doc.vue'
 
