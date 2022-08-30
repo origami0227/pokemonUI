@@ -4,13 +4,15 @@ import './index.css'
 import {createWebHashHistory, createRouter} from 'vue-router'
 import Origami from './components/Origami.vue'
 import Origami2 from './components/Origami2.vue'
+import home from './views/home.vue'
+import Doc from './views/Doc.vue'
 
 const history = createWebHashHistory()
 const router = createRouter({
     history: history,
     routes: [
-        {path: '/', component: Origami},//访问根路径时渲染Origami
-        {path:'/xxx',component:Origami2}
+        {path: '/', component: home},//访问根路径时渲染Origami
+        {path:'/doc',component:Doc}
     ]
 })
 const app = createApp(App)
