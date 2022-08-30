@@ -35,6 +35,7 @@ aside {
   width: 150px;
   padding: 16px;
   position: fixed;
+  padding-top: 70px;
   top: 0;
   left: 0;
   > h2 {
