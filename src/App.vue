@@ -1,15 +1,12 @@
 <template>
   <div>hi</div>
-  <Origami/>
+  <router-view />
 </template>
 
 <script>
-import Origami from './components/Origami.vue'
+
 
 export default {
   name: 'App',
-  components: {
-    Origami
-  }
 }
 </script>
