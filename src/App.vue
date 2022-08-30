@@ -5,6 +5,7 @@
 <script lang="ts">
 
 import {ref, provide} from 'vue'
+import {router} from './router'
 
 export default {
   name: 'App',
@@ -12,6 +13,12 @@ export default {
     const width = document.documentElement.clientWidth
     const asideVisible = ref(width > 500)//默认false
     provide('asideVisible', asideVisible) //提供xxx这个名字即可使用asideVisible
+    router.afterEach(() => {
+      if (width <= 500) {
+        asideVisible.value = false
+      }
+
+    })
   }
 }
 </script>
