@@ -37,7 +37,3 @@ export default {
   }
 }
 </style>
-<script>export default {
-  components: {}
-}
-</script>
