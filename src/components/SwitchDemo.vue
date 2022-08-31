@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--    变量y储存着控制表示开关状态的value input监听当y变化时将y变成最新的值 这个值是$event-->
-    <Switch :value="status" @input="status=$event" />
+    <Switch v-model:value="status"  />
   </div>
 </template>
 <script lang="ts">
