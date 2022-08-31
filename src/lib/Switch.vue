@@ -1,6 +1,6 @@
 <template>
-  <button @click="toggle" :class="{checked}">
-<!--    给button设置一个类，当这个类为ture时变化-->
+  <button @click="toggle" :class="{checked:value}">
+    <!--    给button设置一个类，当这个类为ture时变化-->
     <span></span>
   </button>
 </template>
@@ -8,12 +8,15 @@
 import {ref} from 'vue'
 
 export default {
-  setup() {
-    const checked = ref(false)
+  props: {
+    value: Boolean
+  },
+  setup(props,context) {
     const toggle = () => {
-      checked.value = !checked.value
+      context.emit('input',!props.value)
+    //input 与SwitchDemo组件的input事件对应，！props.value与$event对应
     }
-    return {checked, toggle}
+    return {toggle}
   }
 }
 </script>
@@ -37,6 +40,7 @@ span {
   width: $h2;
   background: white;
   border-radius: $h2 / 2;
+  transition: left 250ms;
 }
 
 button.checked {
