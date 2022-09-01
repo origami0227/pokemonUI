@@ -1,21 +1,19 @@
 <template>
-  <button class="pokemon-button"
-  :class="`theme-${theme}`"
-  >
-    <slot/>
+  <button class="pokemon-button" :class="{[`pokemon-theme-${theme}`]: theme}">
+    <slot />
   </button>
 </template>
 <script lang="ts">
 export default {
-props:{
-  theme: {
-    type:String,
-    default: 'button'
-  }
-}
-}
+  props: {
+    theme: {
+      type: String,
+      default: "button",
+    },
+  },
+};
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
@@ -48,6 +46,22 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.pokemon-theme-link{
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,&:focus{
+      color: lighten($blue, 10%);
+    }
+  }
+  &.pokemon-theme-text{
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,&:focus{
+      background: darken(white, 5%);;
+    }
   }
 }
 </style>
