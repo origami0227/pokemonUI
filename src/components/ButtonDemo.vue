@@ -9,9 +9,37 @@
   </div>
   <h1>示例2</h1>
   <div>
-    <Button size="big">大号的</Button>
-    <Button>标准的</Button>
-    <Button size="small">小号的</Button>
+    <Button theme="button" size="big">大号的</Button>
+    <Button theme="button">标准的</Button>
+    <Button theme="button" size="small">小号的</Button>
+  </div>
+  <div>
+    <Button theme="link" size="big">大号的</Button>
+    <Button theme="link">标准的</Button>
+    <Button theme="link" size="small">小号的</Button>
+  </div>
+  <div>
+    <Button theme="text" size="big">大号的</Button>
+    <Button theme="text">标准的</Button>
+    <Button theme="text" size="small">小号的</Button>
+  </div>
+  <h1>示例3</h1>
+  <div>
+    <dir>
+      <Button level="main">主要按钮</Button>
+      <Button>普通按钮</Button>
+      <Button level="danger">危险按钮</Button>
+    </dir>
+    <dir>
+      <Button theme="link" level="main">主要链接按钮</Button>
+      <Button theme="link">普通链接按钮</Button>
+      <Button theme="link" level="danger">危险链接按钮</Button>
+    </dir>
+    <dir>
+      <Button theme="text" level="main">主要文字按钮</Button>
+      <Button theme="text">普通文字按钮</Button>
+      <Button theme="text" level="danger">危险文字按钮</Button>
+    </dir>
   </div>
 </template>
 
@@ -21,7 +49,10 @@ import Button from '../lib/Button.vue'
 export default {
   components: {Button},
   setup() {
-
+    const onClick = () => {
+      console.log("hi");
+    };
+    return { onClick };
   },
 }
 
