@@ -17,7 +17,7 @@ export default {
       //input 与SwitchDemo组件的input事件对应，！props.value与$event对应
     }
     return {toggle}
-  }
+  },
 }
 
 </script>
