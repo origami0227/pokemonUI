@@ -1,16 +1,17 @@
 <template>
-  <div :size="size">
-    <button v-bind="rest">
-      <slot/>
-    </button>
-  </div>
+  <button class="pokemon-button"
+  :class="`theme-${theme}`"
+  >
+    <slot/>
+  </button>
 </template>
 <script lang="ts">
 export default {
-  inheritAttrs: false,
-  setup(props, context) {
-    const {size, ...rest} = context.attrs//出了size其他的放在rest里面
-    return{size,rest}
+props:{
+  theme: {
+    type:String,
+    default: 'button'
   }
+}
 }
 </script>

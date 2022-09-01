@@ -2,11 +2,10 @@
   <div>button实例</div>
   <h1>示例1</h1>
   <div>
-    <Button @click="onClick"
-            @focus="onFocus"
-            @mouseover="onMouseOver"
-    >你好
-    </Button>
+    <Button>你好</Button>
+    <Button theme="button">你好</Button>
+    <Button theme="link">你好</Button>
+    <Button theme="text">你好</Button>
   </div>
 </template>
 
@@ -16,15 +15,8 @@ import Button from '../lib/Button.vue'
 export default {
   components: {Button},
   setup() {
-    const onClick = () => {
-    }
-    const onFocus = () => {
-    }
-    const onMouseOver = () => {
 
-    }
   },
-
 }
 
 </script>
