@@ -1,20 +1,22 @@
 <template>
   <template v-if="visible">
-    <div class="pokemon-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="pokemon-dialog-wrapper">
-      <div class="pokemon-dialog">
-        <header>
-          <slot name="title"/>
-          <span @click="close" class="pokemon-dialog-close"></span></header>
-        <main>
-          <slot name="content"/>
-        </main>
-        <footer>
-          <Button level="main" @click="ok">OK</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <Teleport to="body">
+      <div class="pokemon-dialog-overlay" @click="onClickOverlay"></div>
+      <div class="pokemon-dialog-wrapper">
+        <div class="pokemon-dialog">
+          <header>
+            <slot name="title"/>
+            <span @click="close" class="pokemon-dialog-close"></span></header>
+          <main>
+            <slot name="content"/>
+          </main>
+          <footer>
+            <Button level="main" @click="ok">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </Teleport>
   </template>
 </template>
 <script lang="ts">
