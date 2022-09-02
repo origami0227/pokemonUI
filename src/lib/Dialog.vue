@@ -42,6 +42,7 @@ export default {
   components: {Button},
   setup(props, context) {
     const cancel = () => {
+      props.cancel?.()
       close()
     }
     const ok = () => {
