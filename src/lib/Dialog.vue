@@ -1,20 +1,20 @@
 <template>
-<template v-if="visible">
-  <div class="pokemon-dialog-overlay"></div>
-  <div class="pokemon-dialog-wrapper">
-    <div class="pokemon-dialog">
-      <header>标题 <span class="pokemon-dialog-close"></span></header>
-      <main>
-        <p>第一行字</p>
-        <p>第二行字</p>
-      </main>
-      <footer>
-        <Button level="main">OK</Button>
-        <Button>Cancel</Button>
-      </footer>
+  <template v-if="visible">
+    <div class="pokemon-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="pokemon-dialog-wrapper">
+      <div class="pokemon-dialog">
+        <header>标题 <span @click="close" class="pokemon-dialog-close"></span></header>
+        <main>
+          <p>第一行字</p>
+          <p>第二行字</p>
+        </main>
+        <footer>
+          <Button level="main" @click="ok">OK</Button>
+          <Button @click="cancel">Cancel</Button>
+        </footer>
+      </div>
     </div>
-  </div>
-</template>
+  </template>
 </template>
 <script lang="ts">
 import Button from './Button.vue'
@@ -22,11 +22,41 @@ import Button from './Button.vue'
 export default {
   props: {
     visible: {
-      type : Boolean,
+      type: Boolean,
       default: false,
+    },
+    closeOnClickOverlay: {//是否点击遮罩层关闭的选项
+      type: Boolean,
+      default: true
+    },
+    ok: {
+      type: Function
+    },
+    cancel: {
+      type: Function
     }
   },
-  components: {Button}
+  components: {Button},
+  setup(props, context) {
+    const cancel = () => {
+      close()
+    }
+    const ok = () => {
+      if(props.ok && props.ok()!==false){
+        //如果ok存在且执行不返回false则执行close
+        close()
+      }
+    }
+    const onClickOverlay = () => {
+      if (props.closeOnClickOverlay) {
+        close()
+      }
+    }
+    const close = () => {
+      context.emit('update:visible', false,)
+    }
+    return {close, onClickOverlay, ok, cancel}
+  }
 }
 </script>
 <style lang="scss">
