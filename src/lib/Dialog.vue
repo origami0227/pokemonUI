@@ -3,10 +3,11 @@
     <div class="pokemon-dialog-overlay" @click="onClickOverlay"></div>
     <div class="pokemon-dialog-wrapper">
       <div class="pokemon-dialog">
-        <header>标题 <span @click="close" class="pokemon-dialog-close"></span></header>
+        <header>
+          <slot name="title"/>
+          <span @click="close" class="pokemon-dialog-close"></span></header>
         <main>
-          <p>第一行字</p>
-          <p>第二行字</p>
+          <slot name="content"/>
         </main>
         <footer>
           <Button level="main" @click="ok">OK</Button>
@@ -42,7 +43,7 @@ export default {
       close()
     }
     const ok = () => {
-      if(props.ok && props.ok()!==false){
+      if (props.ok && props.ok() !== false) {
         //如果ok存在且执行不返回false则执行close
         close()
       }
