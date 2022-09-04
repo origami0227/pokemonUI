@@ -7,7 +7,8 @@
       </div>
     </div>
     <div class="pokemon-tabs-content">
-      <component class="pokemon-tabs-content-item" :is="current"/>
+      <component class="pokemon-tabs-content-item" :class="{selected:c.props.title ===selected}" v-for="c in defaults"
+                 :is="c"/>
     </div>
   </div>
 </template>
@@ -78,6 +79,12 @@ $border-color: #d9d9d9;
 
   &-content {
     padding: 8px 0;
+    &-item{
+      display: none;
+      &.selected{
+        display: block;
+      }
+    }
   }
 }
 </style>
