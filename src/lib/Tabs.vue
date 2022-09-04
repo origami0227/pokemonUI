@@ -2,7 +2,7 @@
   <div class="pokemon-tabs">
     <div class="pokemon-tabs-nav" ref="container">
       <div class="pokemon-tabs-nav-item" @click="select(t)" :class="{selected:t===selected}" v-for="(t,index) in titles"
-           :ref="el=>{if(el)navItems[index]=el}"
+           :ref="el=>{if(t===selected)selectedItem=el}"
            :key="index">
         {{ t }}
       </div>
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Tab from './Tab.vue'
-import {computed, ref, onMounted,onUpdated} from "vue";
+import {computed, ref, onMounted, onUpdated} from "vue";
 
 export default {
   props: {
@@ -26,17 +26,14 @@ export default {
     }
   },
   setup(props, context) {
-    const navItems = ref<HTMLDivElement[]>([])
+    const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
-    const x = ()=>{
-      const divs = navItems.value
-      const result = divs.filter(div => div.classList.contains('selected'))[0]//filter返回数组，会返回一个包含div的数组
-      // const result = divs.find(div=>div.classList.contains('selected'))
-      const {width} = result.getBoundingClientRect()//获取宽度
+    const x = () => {
+      const {width} = selectedItem.value.getBoundingClientRect()//获取宽度
       indicator.value.style.width = width + 'px'
       const {left: left1} = container.value.getBoundingClientRect()//拿到容器container的左坐标
-      const {left: left2} = result.getBoundingClientRect()
+      const {left: left2} = selectedItem.value.getBoundingClientRect()
       const left = left2 - left1
       indicator.value.style.left = left + 'px'
     }
@@ -64,7 +61,7 @@ export default {
       titles,
       current,
       select,
-      navItems,
+      selectedItem,
       indicator,
       container
     }
