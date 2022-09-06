@@ -6,7 +6,8 @@
         <h1>pokemon UI</h1>
         <h2>一个厉害的 UI 框架</h2>
         <p class="actions">
-          <a href="https://github.com/origami0227/pokemonUI">GitHub</a>
+          <a href="https://github.com/origami0227/pokemonUI">GitHub
+          </a>
           <router-link to="/doc">开始</router-link>
         </p>
       </div>
@@ -18,7 +19,7 @@
             <use xlink:href="#icon-Vue"></use>
           </svg>
           <h3>基于 Vue 3</h3>
-          <p>骄傲地使用了 Vue 3 Composition API</p>
+          <p>使用了 Vue 3 Composition API</p>
         </li>
         <li>
           <svg>
@@ -29,10 +30,10 @@
         </li>
         <li>
           <svg>
-            <use xlink:href="#icon-light"></use>
+            <use xlink:href="#icon-gongju"></use>
           </svg>
-          <h3>代码易读</h3>
-          <p>每个组件的源代码都极其简洁</p>
+          <h3>复用性强</h3>
+          <p>设计合理，可以轻松覆盖</p>
         </li>
       </ul>
     </div>
@@ -50,6 +51,7 @@ export default {
 $green: #02bcb0;
 $border-radius: 8px;
 $color: #007974;
+
 .topnavAndBanner {
   background: linear-gradient(145deg, rgba(277, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
   clip-path: ellipse(80% 60% at 50% 40%);
@@ -102,6 +104,7 @@ $color: #007974;
   align-items: center;
   flex-direction: column;
 
+
   > .actions {
     padding: 8px 0;
 
@@ -112,6 +115,7 @@ $color: #007974;
       display: inline-block;
       border-radius: $border-radius;
       padding: 8px 24px;
+
 
       &:hover {
         text-decoration: none;
