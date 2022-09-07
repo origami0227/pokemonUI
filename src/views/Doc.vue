@@ -49,6 +49,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.router-link-active{
+  text-decoration: underline;//后续可改高级效果
+}
 .layout {
   display: flex;
   flex-direction: column;
