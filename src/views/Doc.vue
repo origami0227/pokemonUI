@@ -78,10 +78,10 @@ export default {
   }
 }
 aside {
-  background: lightblue;
+  background: linear-gradient(145deg, rgba(230, 208, 44, 1) 0%, rgba(48, 253, 233, 1) 100%);
   width: 150px;
-  padding: 16px 0 ;
-  position: fixed;
+  padding: 16px 0;
+  position: absolute;
   top: 0;
   left: 0;
   padding-top: 70px;
@@ -94,15 +94,40 @@ aside {
     > li {
       >a{
         padding: 4px 16px;
+        position: relative;
         display: block;
         text-decoration: none;
+        &:hover {
+          background: linear-gradient(145deg, rgba(170, 222, 100, 0.8) 0%, rgba(48, 44, 150, 0.4) 100%);;
+        }
       }
       .router-link-active{
-        //text-decoration: underline;//后续可改高级效果
-        background-color: white;
+        background: linear-gradient(145deg, rgba(170, 222, 100, 0.8) 0%, rgba(48, 44, 150, 0.4) 100%);;
+        //border-right: 3px solid;
+        @media (min-width: 500px) {
+          border-right: none;
+          &::after {
+            content: "";
+            display: block;
+            animation: x 700ms;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 32px;
+            background: #04355b;
+          }
+        }
       }
     }
-  }
+  }@keyframes x {
+     0% {
+       transform: rotateX(90deg);
+     }
+     100% {
+       transform: rotateX(0deg);
+     }
+   }
 }
 main {
   overflow: auto;
