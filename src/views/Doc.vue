@@ -109,7 +109,7 @@ aside {
           &::after {
             content: "";
             display: block;
-            animation: x 700ms;
+            animation: x 0.5s;
             position: absolute;
             top: 0;
             right: 0;
