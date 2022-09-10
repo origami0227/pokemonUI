@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Topnav :toggle-menu-button-visible="true" class="nav" />
+    <Topnav :toggle-menu-button-visible="true" class="nav"/>
     <div class="content">
       <aside v-if="asideVisible">
         <h2>文档</h2>
@@ -32,31 +32,34 @@
         </ol>
       </aside>
       <main>
-        <router-view />
+        <router-view/>
       </main>
     </div>
   </div>
 </template>
 <script lang="ts">
 import Topnav from "../components/Topnav.vue";
-import { inject, Ref } from "vue";
+import {inject, Ref} from "vue";
+
 export default {
-  components: { Topnav },
+  components: {Topnav},
   setup() {
     const asideVisible = inject<Ref<boolean>>("asideVisible"); // get
-    return { asideVisible };
+    return {asideVisible};
   },
 };
 </script>
 <style lang="scss" scoped>
-
+$aside-index:10;
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
+
   > .nav {
     flex-shrink: 0;
   }
+
   > .content {
     flex-grow: 1;
     padding-top: 60px;
@@ -66,17 +69,21 @@ export default {
     }
   }
 }
+
 .content {
   display: flex;
+
   > aside {
     flex-shrink: 0;
   }
+
   > main {
     flex-grow: 1;
     padding: 16px;
     background: white;
   }
 }
+
 aside {
   background: linear-gradient(145deg, rgba(230, 208, 44, 1) 0%, rgba(48, 253, 233, 1) 100%);
   width: 150px;
@@ -86,22 +93,27 @@ aside {
   left: 0;
   padding-top: 70px;
   height: 100%;
+  z-index: $aside-index;
+
   > h2 {
     margin-bottom: 4px;
     padding: 0 16px;
   }
+
   > ol {
     > li {
-      >a{
+      > a {
         padding: 4px 16px;
         position: relative;
         display: block;
         text-decoration: none;
+
         &:hover {
           background: linear-gradient(145deg, rgba(170, 222, 100, 0.8) 0%, rgba(48, 44, 150, 0.4) 100%);;
         }
       }
-      .router-link-active{
+
+      .router-link-active {
         background: linear-gradient(145deg, rgba(170, 222, 100, 0.8) 0%, rgba(48, 44, 150, 0.4) 100%);;
         //border-right: 3px solid;
         @media (min-width: 500px) {
@@ -120,15 +132,18 @@ aside {
         }
       }
     }
-  }@keyframes x {
-     0% {
-       transform: rotateX(90deg);
-     }
-     100% {
-       transform: rotateX(0deg);
-     }
-   }
+  }
+
+  @keyframes x {
+    0% {
+      transform: rotateX(90deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
 }
+
 main {
   overflow: auto;
 }
