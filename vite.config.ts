@@ -15,7 +15,7 @@ export default {
             const main = file.split(parsed.loc.source).join('').trim()
             return `export default function (Component) {
         Component.__sourceCode = ${
-                JSON.stringify(main)
+                JSON.stringify(main)  
             }
         Component.__sourceCodeTitle = ${JSON.stringify(title)}
       }`.trim()
