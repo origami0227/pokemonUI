@@ -20,7 +20,7 @@ import {Button, Tabs, Switch, Dialog} from "pokemon-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "pokemon-ui"
+import {Button, Tabs, Tab,Switch, Dialog,openDialog} from "pokemon-ui"
 export default {
   components: {Button}
 }
