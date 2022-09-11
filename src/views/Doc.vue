@@ -73,6 +73,7 @@ $aside-index:10;
 .content {
   display: flex;
 
+
   > aside {
     flex-shrink: 0;
   }
@@ -85,7 +86,7 @@ $aside-index:10;
 }
 
 aside {
-  background: linear-gradient(145deg, rgba(230, 208, 44, 1) 0%, rgba(48, 253, 233, 1) 100%);
+  background: linear-gradient(rgba(230, 208, 44, 1) 0%, rgba(199,212,175,1)50%,rgba(48, 253, 233, 1) 100%);
   width: 150px;
   padding: 16px 0;
   position: absolute;

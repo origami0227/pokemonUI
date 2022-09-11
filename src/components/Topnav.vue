@@ -38,6 +38,7 @@ export default {
 $color: #007974;
 .topnav {
   color: $color;
+  box-shadow: 0 5px 5px rgba(#333, 0.1);
   display: flex;
   padding: 16px;
   position: fixed;

@@ -53,7 +53,7 @@ $border-radius: 8px;
 $color: #033666;
 
 .topnavAndBanner {
-  background: linear-gradient(145deg, rgba(230, 208, 44, 1) 0%, rgba(48, 253, 233, 1) 100%);
+  background: linear-gradient( rgba(230, 208, 44, 1) 0%, rgba(48, 253, 233, 1) 100%);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 
