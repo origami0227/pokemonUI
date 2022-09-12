@@ -5,7 +5,6 @@
   </button>
 </template>
 <script lang="ts">
-import {ref} from 'vue'
 
 export default {
   props: {
@@ -21,50 +20,45 @@ export default {
 }
 
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+@use "sass:math";
 $h: 22px;
 $h2: $h - 4px;
 .pokemon-switch {
   height: $h;
-  width: $h*2;
+  width: $h * 2;
   border: none;
   background: #bfbfbf;
-  border-radius: calc($h2 / 2);
+  border-radius: $h/2;
   position: relative;
-
-  > span {
+  >span {
     position: absolute;
     top: 2px;
     left: 2px;
     height: $h2;
     width: $h2;
     background: white;
-    border-radius: calc($h2 / 2);
+    border-radius: $h/2;
     transition: all 250ms;
   }
-
   &.pokemon-checked {
     background: #1890ff;
-
-    > span {
+    >span {
       left: calc(100% - #{$h2} - 2px);
     }
   }
-
-  &.pokemon-checked:active {
-    > span {
-      width: $h2 + 4px;
-      margin-left: -4px;
-    }
-  }
-
   &:focus {
     outline: none;
   }
-
   &:active {
-    > span {
+    >span {
       width: $h2 + 4px;
+    }
+  }
+  &.pokemon-checked:active {
+    >span {
+      width: $h2 + 4px;
+      margin-left: -4px;
     }
   }
 }
