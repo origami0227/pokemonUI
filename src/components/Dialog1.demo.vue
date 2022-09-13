@@ -22,9 +22,6 @@ import Button from '../lib/Button.vue'
 import {
   ref
 } from 'vue'
-import {
-  openDialog
-} from '../lib/openDialog'
 export default {
   components: {
     Dialog,
