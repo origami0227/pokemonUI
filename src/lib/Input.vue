@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper" :class="{error}">
-    <input :value="value" type="text" :disabled="disabled" :readonly="readonly"
-           @change="$emit('change',$event.target.value)"
-           @input="$emit('input',$event.target.value)"
-           @focus="$emit('focus',$event.target.value)"
-           @blur="$emit('blur',$event.target.value)">
+    <input :value="value" type="text" :disabled="disabled" :readonly="readonly">
     <div class="box" v-if="error">
       <svg>
         <use xlink:href="#icon-jinggao"></use>
