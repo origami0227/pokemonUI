@@ -1,13 +1,12 @@
 <template>
   <div class="popover" @click="show">
-    <div class="content-wrapper" v-if="visible">
+    <div class="content-wrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
     <slot/>
   </div>
 </template>
 <script>
-import {nextTick} from "vue";
 
 export default {
   name: 'pokemonPopover',
@@ -16,18 +15,21 @@ export default {
     return {visible: false}
   },
   methods: {
-    async show() {
+    show() {
       this.visible = !this.visible
-      console.log(1)
-      await nextTick()
-      if(this.visible ===true){
-        document.addEventListener('click',()=>{
-          this.visible = false
-          console.log(2)
-        })
+      if (this.visible === true) {
+        setTimeout(() => {
+          let eventHandler = () => {
+            this.visible = false
+            console.log('document隐藏popover')
+            document.removeEventListener('click', eventHandler)
+          }
+          document.addEventListener('click', eventHandler)
+        }, 0)
+      }else{
+        console.log('vm隐藏popover')
       }
     }
-
   }
 }
 </script>
