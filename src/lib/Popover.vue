@@ -1,42 +1,32 @@
 <template>
   <div class="popover" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible"
-         :class="{[`position-${position}`]:true}">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{ [`position-${position}`]: true }">
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
-      <slot/>
+      <slot />
     </span>
   </div>
 </template>
 <script>
-import {onMounted,onUnmounted} from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 export default {
   name: 'pokemonPopover',
-  setup(){
-    onUnmounted(()=>{
-      if (this.trigger === 'click') {
-        this.$refs.popover.removeEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.removeEventListener('mouseenter', this.open)
-        this.$refs.popover.removeEventListener('mouseleave', this.close)
-      }
-    })
-    onMounted(()=>{
-      if(this.trigger ==='click') {
-        this.$refs.popover.addEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.addEventListener('mouseenter', this.open)
-        this.$refs.popover.addEventListener('mouseleave', this.close)
-      }
-    })
+  beforeUnmount() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
+    }
   },
-  trigger: {
-    type: String,
-    default: 'click',
-    validator(value) {
-      return ['click', 'hover'].indexOf(value) >= 0
+  mounted() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
   props: {
@@ -46,7 +36,14 @@ export default {
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
       }
-    }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) >= 0
+      }
+    },
   },
   data() {
     return {
@@ -71,10 +68,10 @@ export default {
   },
   methods: {
     positionContent() {
-      const {contentWrapper, triggerWrapper} = this.$refs
+      const { contentWrapper, triggerWrapper } = this.$refs
       document.body.appendChild(contentWrapper)
-      const {width, height, top, left} = triggerWrapper.getBoundingClientRect()
-      const {height: height2} = contentWrapper.getBoundingClientRect()
+      const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
+      const { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {
         top: {
           top: top + window.scrollY,
@@ -98,15 +95,15 @@ export default {
     },
     onClickDocument(e) {
       if (this.$refs.popover &&
-          (
-              this.$refs.popover === e.target ||
-              this.$refs.popover.contains(e.target))
+        (
+          this.$refs.popover === e.target ||
+          this.$refs.popover.contains(e.target))
       ) {
         return
       }
       if (this.$refs.contentWrapper && (
-          this.$refs.contentWrapper === e.target ||
-          this.$refs.contentWrapper.contains(e.target))
+        this.$refs.contentWrapper === e.target ||
+        this.$refs.contentWrapper.contains(e.target))
       ) {
         return
       }
@@ -139,6 +136,7 @@ export default {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
+
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -157,7 +155,8 @@ $border-radius: 4px;
   max-width: 20em;
   word-break: break-all;
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     display: block;
     border: 10px solid transparent;
@@ -170,7 +169,8 @@ $border-radius: 4px;
     transform: translateY(-100%);
     margin-top: -10px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       left: 10px;
     }
 
@@ -188,7 +188,8 @@ $border-radius: 4px;
   &.position-bottom {
     margin-top: 10px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       left: 10px;
     }
 
@@ -207,7 +208,8 @@ $border-radius: 4px;
     transform: translateX(-100%);
     margin-left: -10px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       top: 50%;
       transform: translateY(-50%);
     }
@@ -226,7 +228,8 @@ $border-radius: 4px;
   &.position-right {
     margin-left: 10px;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       top: 50%;
       transform: translateY(-50%);
     }
@@ -242,5 +245,4 @@ $border-radius: 4px;
     }
   }
 }
-
 </style>
