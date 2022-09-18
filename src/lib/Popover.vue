@@ -1,42 +1,30 @@
 <template>
   <div class="popover" ref="popover">
-    <div ref="contentWrapper" class="content-wrapper" v-if="visible"
-         :class="{[`position-${position}`]:true}">
+    <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{ [`position-${position}`]: true }">
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
-      <slot/>
+      <slot />
     </span>
   </div>
 </template>
 <script>
-import {onMounted,onUnmounted} from "vue";
-
 export default {
   name: 'pokemonPopover',
-  setup(){
-    onUnmounted(()=>{
-      if (this.trigger === 'click') {
-        this.$refs.popover.removeEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.removeEventListener('mouseenter', this.open)
-        this.$refs.popover.removeEventListener('mouseleave', this.close)
-      }
-    })
-    onMounted(()=>{
-      if(this.trigger ==='click') {
-        this.$refs.popover.addEventListener('click', this.onClick)
-      } else {
-        this.$refs.popover.addEventListener('mouseenter', this.open)
-        this.$refs.popover.addEventListener('mouseleave', this.close)
-      }
-    })
+  beforeUnmount() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.removeEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open)
+      this.$refs.popover.removeEventListener('mouseleave', this.close)
+    }
   },
-  trigger: {
-    type: String,
-    default: 'click',
-    validator(value) {
-      return ['click', 'hover'].indexOf(value) >= 0
+  mounted() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
   props: {
@@ -46,7 +34,14 @@ export default {
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
       }
-    }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) >= 0
+      }
+    },
   },
   data() {
     return {
@@ -71,10 +66,10 @@ export default {
   },
   methods: {
     positionContent() {
-      const {contentWrapper, triggerWrapper} = this.$refs
+      const { contentWrapper, triggerWrapper } = this.$refs
       document.body.appendChild(contentWrapper)
-      const {width, height, top, left} = triggerWrapper.getBoundingClientRect()
-      const {height: height2} = contentWrapper.getBoundingClientRect()
+      const { width, height, top, left } = triggerWrapper.getBoundingClientRect()
+      const { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {
         top: {
           top: top + window.scrollY,
@@ -112,7 +107,6 @@ export default {
       }
       this.close()
     },
-
     open() {
       this.visible = true
       setTimeout(() => {
