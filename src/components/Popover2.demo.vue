@@ -1,5 +1,5 @@
 <demo>
-常规用法 click
+支持hover
 </demo>
 <template>
   <div style="overflow: hidden;padding: 5px">
