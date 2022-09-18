@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible"
          :class="{[`position-${position}`]:true}">
       <slot name="content"></slot>
@@ -10,9 +10,35 @@
   </div>
 </template>
 <script>
+import {onMounted,onUnmounted} from "vue";
 
 export default {
   name: 'pokemonPopover',
+  setup(){
+    onUnmounted(()=>{
+      if (this.trigger === 'click') {
+        this.$refs.popover.removeEventListener('click', this.onClick)
+      } else {
+        this.$refs.popover.removeEventListener('mouseenter', this.open)
+        this.$refs.popover.removeEventListener('mouseleave', this.close)
+      }
+    })
+    onMounted(()=>{
+      if(this.trigger ==='click') {
+        this.$refs.popover.addEventListener('click', this.onClick)
+      } else {
+        this.$refs.popover.addEventListener('mouseenter', this.open)
+        this.$refs.popover.addEventListener('mouseleave', this.close)
+      }
+    })
+  },
+  trigger: {
+    type: String,
+    default: 'click',
+    validator(value) {
+      return ['click', 'hover'].indexOf(value) >= 0
+    }
+  },
   props: {
     position: {
       type: String,
@@ -23,7 +49,25 @@ export default {
     }
   },
   data() {
-    return {visible: false}
+    return {
+      visible: false,
+    }
+  },
+  computed: {
+    openEvent() {
+      if (this.trigger === 'click') {
+        return 'click'
+      } else {
+        return 'mouseenter'
+      }
+    },
+    closeEvent() {
+      if (this.trigger === 'click') {
+        return 'click'
+      } else {
+        return 'mouseleave'
+      }
+    }
   },
   methods: {
     positionContent() {
