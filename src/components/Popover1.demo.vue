@@ -2,18 +2,30 @@
 常规用法
 </demo>
 <template>
-  <div style="overflow: hidden;border: 1px solid green; padding: 5px" @click="yyy">
-    <Popover>
+  <div style="overflow: hidden;padding: 5px">
+    <Popover position="top">
       <template v-slot:content>
-        <div>popover内容</div>
+        <div>上方弹出</div>
       </template>
-      <Button>点我</Button>
+      <Button>上方弹出</Button>
     </Popover>
-    <Popover>
+    <Popover position="bottom">
       <template v-slot:content>
-        <div>popover内容</div>
+        <div>下方弹出</div>
       </template>
-      <Button>点我</Button>
+      <Button>下方弹出</Button>
+    </Popover>
+    <Popover position="left">
+      <template v-slot:content>
+        <div>左方弹出</div>
+      </template>
+      <Button>左方弹出</Button>
+    </Popover>
+    <Popover position="right">
+      <template v-slot:content>
+        <div>右方弹出</div>
+      </template>
+      <Button>右方弹出</Button>
     </Popover>
   </div>
 
@@ -23,13 +35,10 @@ import Popover from '../lib/Popover.vue'
 import Button from '../lib/Button.vue'
 export default {
   components: {Popover,Button},
-  methods:{
-    yyy(){
-      console.log('yyy')
-    }
-  }
 }
 </script>
 <style lang="scss" scoped>
-
+Button{
+  padding:5px;
+}
 </style>

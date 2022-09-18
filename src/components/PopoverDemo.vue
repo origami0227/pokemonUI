@@ -1,6 +1,7 @@
 <template>
   <h1>Popover示例</h1>
   <Demo2 :component="PopoverDemo1" />
+
 </template>
 <script lang="ts">
 import Demo2 from "./Demo2.vue";

@@ -48,7 +48,7 @@ $border-color: #d9d9d9;
   }
 
   &-component {
-    padding: 40px;
+    padding: 50px;
   }
 
   &-actions {
