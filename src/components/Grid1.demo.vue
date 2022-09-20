@@ -1,5 +1,5 @@
 <demo>
-示例
+常规用法
 </demo>
 <template>
 <Row>
@@ -19,11 +19,21 @@
   </Row>
   <Row>
     <Col :span="2"></Col>
-    <Col :span="22"></Col>
+    <Col :span="20" offset="2"></Col>
   </Row>
   <Row>
     <Col :span="4"></Col>
-    <Col :span="20"></Col>
+    <Col :span="18" offset="2"></Col>
+  </Row>
+  <Row>
+    <Col :span="4"></Col>
+    <Col :span="8" offset="2"></Col>
+    <Col :span="8" offset="2"></Col>
+  </Row>
+  <Row>
+    <Col :span="4"></Col>
+    <Col :span="4" offset="6"></Col>
+    <Col :span="8" offset="2"></Col>
   </Row>
 </template>
 <script>
