@@ -14,5 +14,8 @@ $border-radius: 4px;
 .collapse {
   border: 1px solid $grey;
   border-radius: $border-radius;
+  &:hover{
+    cursor: pointer;
+  }
 }
 </style>
