@@ -1,5 +1,5 @@
 <demo>
-基础布局 1/24 分栏
+混合布局 支持偏移指定的栏数
 </demo>
 <template>
   <Row>
@@ -7,26 +7,23 @@
   </Row>
   <Row>
     <Col span="12" class="heavy"></Col>
-    <Col span="12" class="light"></Col>
+    <Col span="8" offset="4" class="light"></Col>
   </Row>
   <Row>
     <Col span="8" class="heavy"></Col>
-    <Col span="8" class="light"></Col>
-    <Col span="8" class="heavy"></Col>
+    <Col span="6" offset="2" class="light"></Col>
+    <Col span="4" offset="4" class="heavy"></Col>
   </Row>
   <Row>
     <Col span="6" class="heavy"></Col>
-    <Col span="6" class="light"></Col>
-    <Col span="6" class="heavy"></Col>
+    <Col span="2" offset="4" class="light"></Col>
+    <Col span="3" offset="3" class="heavy"></Col>
     <Col span="6" class="light"></Col>
   </Row>
   <Row>
     <Col span="4" class="heavy"></Col>
-    <Col span="4" class="light"></Col>
+    <Col span="12" offset="4" class="light"></Col>
     <Col span="4" class="heavy"></Col>
-    <Col span="4" class="light"></Col>
-    <Col span="4" class="heavy"></Col>
-    <Col span="4" class="light"></Col>
   </Row>
 </template>
 <script>

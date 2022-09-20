@@ -33,7 +33,6 @@ export default {
 .col {
   display: flex;
   height: 100px;
-  width: 50%;
   border: 1px solid #ddd;
   $class-prefix: col-;
   @for $n from 1 through 24 {
