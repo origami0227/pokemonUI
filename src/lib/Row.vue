@@ -11,13 +11,6 @@ export default {
       type: [Number, String]
     }
   },
-
-  mounted() {
-    console.log('row mounted')
-    // this.$children.forEach((vm)=>{
-    //   vm.gutter = this.gutter
-    // })
-  }
 }
 </script>
 <style lang="scss" scoped>
