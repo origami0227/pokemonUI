@@ -9,6 +9,7 @@ import InputDemo from './components/InputDemo.vue'
 import PopoverDemo from './components/PopoverDemo.vue'
 import CollapseDemo from './components/CollapseDemo.vue'
 import GridDemo from "./components/GridDemo.vue";
+import ElseDemo from './components/ElseDemo.vue'
 import {h} from 'vue'
 import Markdown from './components/Markdown.vue'
 import intro from './markdown/intro.md'
@@ -37,6 +38,7 @@ export const router = createRouter({
                 {path: 'input', component: InputDemo},
                 {path: 'popover', component: PopoverDemo},
                 {path: 'collapse', component: CollapseDemo},
+                {path: 'else', component: ElseDemo},
             ]
         }
     ]
